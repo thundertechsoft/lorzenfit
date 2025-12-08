@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Lorzenfit | Manage Products & Orders</title>
+    <meta name="description" content="Lorzenfit Admin Dashboard to manage products, orders, and website settings.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Admin Header -->
+    <div class="admin-wrapper">
+        <div class="admin-sidebar" id="adminSidebar">
+            <div class="sidebar-header">
+                <div class="admin-logo">
+                    <i class="fas fa-tshirt"></i>
+                    <span>Lorzenfit<span class="admin-text">Admin</span></span>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="sidebar-menu">
+                <ul>
+                    <li>
+                        <a href="#" class="active" data-tab="dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-tab="products">
+                            <i class="fas fa-tshirt"></i>
+                            <span>Products</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-tab="add-product">
+                            <i class="fas fa-plus-circle"></i>
+                            <span>Add Product</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-tab="orders">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span>Orders</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-tab="customers">
+                            <i class="fas fa-users"></i>
+                            <span>Customers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-tab="analytics">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-tab="settings">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-tab="payment">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Payment</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-footer">
+                <div class="admin-profile">
+                    <div class="profile-image">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h4>Admin</h4>
+                        <p>Super Admin</p>
+                    </div>
+                </div>
+                <a href="index.html" class="btn btn-outline btn-block">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </div>
+        
+        <div class="admin-content" id="adminContent">
+            <div class="admin-header">
+                <div class="header-left">
+                    <h1 id="adminPageTitle">Dashboard</h1>
+                    <p id="adminPageSubtitle">Welcome to Lorzenfit Admin Panel</p>
+                </div>
+                <div class="header-right">
+                    <div class="header-actions">
+                        <button class="btn btn-primary" id="refreshBtn">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                        <div class="notification-bell">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Admin Content Area -->
+            <div class="admin-main-content" id="adminMainContent">
+                <!-- Dashboard Content -->
+                <div class="tab-content active" id="dashboardTab">
+                    <!-- Stats Cards -->
+                    <div class="stats-cards">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-box"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="totalProducts">0</h3>
+                                <p>Total Products</p>
+                            </div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> 12%
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-shopping-bag"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="totalOrders">0</h3>
+                                <p>Total Orders</p>
+                            </div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> 8%
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="totalRevenue">Rs. 0</h3>
+                                <p>Total Revenue</p>
+                            </div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> 15%
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="totalCustomers">0</h3>
+                                <p>Total Customers</p>
+                            </div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i> 5%
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Charts and Recent Activity -->
+                    <div class="dashboard-grid">
+                        <div class="chart-container">
+                            <h3>Sales Overview</h3>
+                            <div class="chart-placeholder">
+                                <canvas id="salesChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="recent-orders-container">
+                            <h3>Recent Orders</h3>
+                            <div class="table-responsive">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Customer</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recentOrdersTable">
+                                        <tr>
+                                            <td colspan="5" class="text-center">Loading orders...</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <a href="#" class="view-all-link">View All Orders</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+                        <h3>Quick Actions</h3>
+                        <div class="actions-grid">
+                            <a href="#" class="action-card" data-tab="add-product">
+                                <i class="fas fa-plus"></i>
+                                <span>Add New Product</span>
+                            </a>
+                            <a href="#" class="action-card" data-tab="products">
+                                <i class="fas fa-edit"></i>
+                                <span>Manage Products</span>
+                            </a>
+                            <a href="#" class="action-card" data-tab="orders">
+                                <i class="fas fa-shopping-bag"></i>
+                                <span>View Orders</span>
+                            </a>
+                            <a href="#" class="action-card" data-tab="settings">
+                                <i class="fas fa-cog"></i>
+                                <span>Website Settings</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Products Management Tab -->
+                <div class="tab-content" id="productsTab">
+                    <div class="section-header">
+                        <h2>Manage Products</h2>
+                        <div class="header-actions">
+                            <input type="text" class="search-input" placeholder="Search products..." id="productSearch">
+                            <button class="btn btn-primary" data-tab="add-product">
+                                <i class="fas fa-plus"></i> Add Product
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" id="selectAll">
+                                    </th>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsTable">
+                                <!-- Products loaded by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="table-footer">
+                        <div class="bulk-actions">
+                            <select class="form-control-sm">
+                                <option>Bulk Actions</option>
+                                <option>Delete Selected</option>
+                                <option>Update Status</option>
+                                <option>Update Price</option>
+                            </select>
+                            <button class="btn btn-sm btn-primary">Apply</button>
+                        </div>
+                        <div class="pagination">
+                            <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                            <span class="page-info">Page 1 of 1</span>
+                            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add Product Tab -->
+                <div class="tab-content" id="addProductTab">
+                    <div class="section-header">
+                        <h2>Add New Product</h2>
+                        <p>Add shirts with front and back images</p>
+                    </div>
+                    
+                    <form id="addProductForm" enctype="multipart/form-data">
+                        <div class="form-section">
+                            <h3>Basic Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Product Name *</label>
+                                    <input type="text" id="productName" class="form-control" required placeholder="Enter product name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Price (Rs.) *</label>
+                                    <input type="number" id="productPrice" class="form-control" required step="0.01" placeholder="0.00">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Category *</label>
+                                    <select id="productCategory" class="form-control" required>
+                                        <option value="">Select Category</option>
+                                        <option value="casual">Casual</option>
+                                        <option value="formal">Formal</option>
+                                        <option value="party">Party</option>
+                                        <option value="sports">Sports</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Stock Quantity *</label>
+                                    <input type="number" id="productStock" class="form-control" required min="0" placeholder="0">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea id="productDescription" class="form-control" rows="4" placeholder="Enter product description"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Product Images</h3>
+                            <p class="form-help">Upload clear front and back images of the shirt</p>
+                            
+                            <div class="image-upload-grid">
+                                <div class="image-upload-box" id="frontImageUpload">
+                                    <div class="upload-placeholder">
+                                        <i class="fas fa-camera"></i>
+                                        <p>Front Image *</p>
+                                        <small>Click to upload</small>
+                                    </div>
+                                    <input type="file" id="frontImage" accept="image/*" style="display: none;">
+                                    <div class="image-preview" id="frontImagePreview"></div>
+                                </div>
+                                
+                                <div class="image-upload-box" id="backImageUpload">
+                                    <div class="upload-placeholder">
+                                        <i class="fas fa-camera"></i>
+                                        <p>Back Image *</p>
+                                        <small>Click to upload</small>
+                                    </div>
+                                    <input type="file" id="backImage" accept="image/*" style="display: none;">
+                                    <div class="image-preview" id="backImagePreview"></div>
+                                </div>
+                                
+                                <div class="image-upload-box" id="extraImageUpload">
+                                    <div class="upload-placeholder">
+                                        <i class="fas fa-images"></i>
+                                        <p>Extra Image</p>
+                                        <small>Optional</small>
+                                    </div>
+                                    <input type="file" id="extraImage" accept="image/*" style="display: none;">
+                                    <div class="image-preview" id="extraImagePreview"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Additional Details</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Sizes Available</label>
+                                    <div class="checkbox-group">
+                                        <label><input type="checkbox" name="size" value="XS"> XS</label>
+                                        <label><input type="checkbox" name="size" value="S"> S</label>
+                                        <label><input type="checkbox" name="size" value="M"> M</label>
+                                        <label><input type="checkbox" name="size" value="L"> L</label>
+                                        <label><input type="checkbox" name="size" value="XL"> XL</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Colors</label>
+                                    <input type="text" id="productColors" class="form-control" placeholder="Blue, Red, White (comma separated)">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Tags</label>
+                                <input type="text" id="productTags" class="form-control" placeholder="casual, formal, summer (comma separated)">
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>SEO Settings</h3>
+                            <div class="form-group">
+                                <label>SEO Title</label>
+                                <input type="text" id="seoTitle" class="form-control" placeholder="SEO optimized title">
+                            </div>
+                            <div class="form-group">
+                                <label>Meta Description</label>
+                                <textarea id="seoDescription" class="form-control" rows="3" placeholder="SEO meta description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>URL Slug</label>
+                                <input type="text" id="productSlug" class="form-control" placeholder="product-url-slug">
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Product
+                            </button>
+                            <button type="button" class="btn btn-outline" id="previewProduct">
+                                <i class="fas fa-eye"></i> Preview
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-undo"></i> Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Payment Settings Tab -->
+                <div class="tab-content" id="paymentTab">
+                    <div class="section-header">
+                        <h2>Payment Settings</h2>
+                        <p>Configure payment gateways for your store</p>
+                    </div>
+                    
+                    <div class="settings-grid">
+                        <div class="settings-sidebar">
+                            <ul class="settings-menu">
+                                <li><a href="#" class="active" data-settings="easypaisa">EasyPaisa</a></li>
+                                <li><a href="#" data-settings="jazzcash">JazzCash</a></li>
+                                <li><a href="#" data-settings="stripe">Stripe</a></li>
+                                <li><a href="#" data-settings="cod">Cash on Delivery</a></li>
+                                <li><a href="#" data-settings="general">General Settings</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="settings-content">
+                            <!-- EasyPaisa Settings -->
+                            <div class="settings-panel active" id="easypaisaSettings">
+                                <h3>EasyPaisa Configuration</h3>
+                                <div class="api-notice">
+                                    <i class="fas fa-info-circle"></i>
+                                    <div>
+                                        <strong>API Integration Required:</strong> You need to add your EasyPaisa API credentials for payment processing.
+                                        <br><small>Contact EasyPaisa merchant support to get API credentials.</small>
+                                    </div>
+                                </div>
+                                
+                                <form id="easypaisaConfigForm">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>Merchant ID *</label>
+                                            <input type="text" id="easypaisaMerchantId" class="form-control" required>
+                                            <small class="form-help">Your EasyPaisa merchant identification number</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Store ID</label>
+                                            <input type="text" id="easypaisaStoreId" class="form-control">
+                                            <small class="form-help">Optional store identifier</small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>API Key *</label>
+                                            <input type="password" id="easypaisaApiKey" class="form-control" required>
+                                            <small class="form-help">Your EasyPaisa API key</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Secure Key</label>
+                                            <input type="password" id="easypaisaSecureKey" class="form-control">
+                                            <small class="form-help">Optional secure key for additional security</small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Payment Mode</label>
+                                        <div class="radio-group">
+                                            <label>
+                                                <input type="radio" name="easypaisaMode" value="sandbox" checked>
+                                                Sandbox (Testing)
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="easypaisaMode" value="production">
+                                                Production (Live)
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>
+                                            <input type="checkbox" id="easypaisaEnabled" checked>
+                                            Enable EasyPaisa Payments
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="test-api-section">
+                                        <h4>Test API Connection</h4>
+                                        <p>Test your API configuration before going live:</p>
+                                        <button type="button" class="btn btn-secondary" id="testEasyPaisaApi">
+                                            <i class="fas fa-plug"></i> Test Connection
+                                        </button>
+                                        <div id="apiTestResult" class="test-result"></div>
+                                    </div>
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-save"></i> Save Settings
+                                        </button>
+                                        <button type="button" class="btn btn-outline" id="resetEasyPaisa">
+                                            <i class="fas fa-undo"></i> Reset
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <!-- General Payment Settings -->
+                            <div class="settings-panel" id="generalSettings">
+                                <h3>General Payment Settings</h3>
+                                <form id="generalPaymentForm">
+                                    <div class="form-group">
+                                        <label>Currency</label>
+                                        <select id="paymentCurrency" class="form-control">
+                                            <option value="PKR">Pakistani Rupee (PKR)</option>
+                                            <option value="USD">US Dollar (USD)</option>
+                                            <option value="EUR">Euro (EUR)</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Default Payment Method</label>
+                                        <select id="defaultPaymentMethod" class="form-control">
+                                            <option value="easypaisa">EasyPaisa</option>
+                                            <option value="cod">Cash on Delivery</option>
+                                            <option value="card">Credit/Debit Card</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Order Confirmation Email</label>
+                                        <textarea id="orderEmailTemplate" class="form-control" rows="5" placeholder="Order confirmation email template..."></textarea>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>
+                                            <input type="checkbox" id="sendSmsNotifications" checked>
+                                            Send SMS Notifications
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-save"></i> Save Settings
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="easypaisa-payment.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Admin Dashboard JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeAdminDashboard();
+        });
+        
+        function initializeAdminDashboard() {
+            // Sidebar toggle
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const adminSidebar = document.getElementById('adminSidebar');
+            const adminContent = document.getElementById('adminContent');
+            
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', function() {
+                    adminSidebar.classList.toggle('collapsed');
+                    adminContent.classList.toggle('expanded');
+                });
+            }
+            
+            // Tab switching
+            const menuItems = document.querySelectorAll('.sidebar-menu a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Update active menu item
+                    menuItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Get tab name
+                    const tabName = this.getAttribute('data-tab');
+                    switchTab(tabName);
+                });
+            });
+            
+            // Quick action cards
+            const actionCards = document.querySelectorAll('.action-card');
+            actionCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabName = this.getAttribute('data-tab');
+                    switchTab(tabName);
+                    
+                    // Update menu
+                    menuItems.forEach(i => i.classList.remove('active'));
+                    document.querySelector(`.sidebar-menu a[data-tab="${tabName}"]`).classList.add('active');
+                });
+            });
+            
+            // Image upload
+            setupImageUpload();
+            
+            // Forms
+            setupAdminForms();
+            
+            // Load initial data
+            loadDashboardStats();
+            loadRecentOrders();
+            loadProductsTable();
+            
+            // Setup chart
+            setupSalesChart();
+        }
+        
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab
+            const selectedTab = document.getElementById(tabName + 'Tab');
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+                
+                // Update page title
+                const pageTitle = document.getElementById('adminPageTitle');
+                const pageSubtitle = document.getElementById('adminPageSubtitle');
+                
+                switch(tabName) {
+                    case 'dashboard':
+                        pageTitle.textContent = 'Dashboard';
+                        pageSubtitle.textContent = 'Welcome to Lorzenfit Admin Panel';
+                        break;
+                    case 'products':
+                        pageTitle.textContent = 'Manage Products';
+                        pageSubtitle.textContent = 'View and manage your product catalog';
+                        break;
+                    case 'add-product':
+                        pageTitle.textContent = 'Add New Product';
+                        pageSubtitle.textContent = 'Add shirts with front and back images';
+                        break;
+                    case 'payment':
+                        pageTitle.textContent = 'Payment Settings';
+                        pageSubtitle.textContent = 'Configure payment gateways';
+                        break;
+                }
+            }
+        }
+        
+        function setupImageUpload() {
+            // Front image upload
+            const frontUpload = document.getElementById('frontImageUpload');
+            const frontInput = document.getElementById('frontImage');
+            
+            if (frontUpload && frontInput) {
+                frontUpload.addEventListener('click', () => frontInput.click());
+                frontInput.addEventListener('change', function() {
+                    previewAdminImage(this, 'frontImagePreview');
+                });
+            }
+            
+            // Back image upload
+            const backUpload = document.getElementById('backImageUpload');
+            const backInput = document.getElementById('backImage');
+            
+            if (backUpload && backInput) {
+                backUpload.addEventListener('click', () => backInput.click());
+                backInput.addEventListener('change', function() {
+                    previewAdminImage(this, 'backImagePreview');
+                });
+            }
+            
+            // Extra image upload
+            const extraUpload = document.getElementById('extraImageUpload');
+            const extraInput = document.getElementById('extraImage');
+            
+            if (extraUpload && extraInput) {
+                extraUpload.addEventListener('click', () => extraInput.click());
+                extraInput.addEventListener('change', function() {
+                    previewAdminImage(this, 'extraImagePreview');
+                });
+            }
+        }
+        
+        function previewAdminImage(input, previewId) {
+            const preview = document.getElementById(previewId);
+            if (!preview) return;
+            
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.innerHTML = `<img src="${e.target.result}" alt="Preview">`;
+                    preview.parentElement.classList.add('has-image');
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        function setupAdminForms() {
+            // Add product form
+            const addProductForm = document.getElementById('addProductForm');
+            if (addProductForm) {
+                addProductForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const productData = {
+                        name: document.getElementById('productName').value,
+                        price: parseFloat(document.getElementById('productPrice').value),
+                        category: document.getElementById('productCategory').value,
+                        stock: parseInt(document.getElementById('productStock').value),
+                        description: document.getElementById('productDescription').value,
+                        colors: document.getElementById('productColors').value.split(',').map(c => c.trim()),
+                        tags: document.getElementById('productTags').value.split(',').map(t => t.trim()),
+                        seoTitle: document.getElementById('seoTitle').value,
+                        seoDescription: document.getElementById('seoDescription').value,
+                        slug: document.getElementById('productSlug').value,
+                        createdAt: new Date().toISOString(),
+                        updatedAt: new Date().toISOString()
+                    };
+                    
+                    // Get selected sizes
+                    const sizeCheckboxes = document.querySelectorAll('input[name="size"]:checked');
+                    productData.sizes = Array.from(sizeCheckboxes).map(cb => cb.value);
+                    
+                    // Validate images
+                    const frontImage = document.getElementById('frontImage').files[0];
+                    const backImage = document.getElementById('backImage').files[0];
+                    
+                    if (!frontImage || !backImage) {
+                        showToast('Please upload both front and back images', 'error');
+                        return;
+                    }
+                    
+                    // In real app, upload images to Firebase Storage
+                    // For demo, we'll simulate
+                    
+                    saveProduct(productData);
+                });
+            }
+            
+            // EasyPaisa configuration form
+            const easypaisaForm = document.getElementById('easypaisaConfigForm');
+            if (easypaisaForm) {
+                easypaisaForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const config = {
+                        merchantId: document.getElementById('easypaisaMerchantId').value,
+                        storeId: document.getElementById('easypaisaStoreId').value,
+                        apiKey: document.getElementById('easypaisaApiKey').value,
+                        secureKey: document.getElementById('easypaisaSecureKey').value,
+                        mode: document.querySelector('input[name="easypaisaMode"]:checked').value,
+                        enabled: document.getElementById('easypaisaEnabled').checked
+                    };
+                    
+                    // Save to localStorage (in real app, save to Firebase)
+                    localStorage.setItem('lorzenfit_easypaisa_config', JSON.stringify(config));
+                    showToast('EasyPaisa settings saved successfully!', 'success');
+                });
+                
+                // Load saved config
+                const savedConfig = localStorage.getItem('lorzenfit_easypaisa_config');
+                if (savedConfig) {
+                    const config = JSON.parse(savedConfig);
+                    document.getElementById('easypaisaMerchantId').value = config.merchantId || '';
+                    document.getElementById('easypaisaStoreId').value = config.storeId || '';
+                    document.getElementById('easypaisaApiKey').value = config.apiKey || '';
+                    document.getElementById('easypaisaSecureKey').value = config.secureKey || '';
+                    if (config.mode) {
+                        document.querySelector(`input[name="easypaisaMode"][value="${config.mode}"]`).checked = true;
+                    }
+                    document.getElementById('easypaisaEnabled').checked = config.enabled !== false;
+                }
+                
+                // Test API connection
+                const testApiBtn = document.getElementById('testEasyPaisaApi');
+                if (testApiBtn) {
+                    testApiBtn.addEventListener('click', async function() {
+                        const testResult = document.getElementById('apiTestResult');
+                        testResult.innerHTML = '<div class="loading">Testing connection...</div>';
+                        
+                        // Simulate API test
+                        setTimeout(() => {
+                            const merchantId = document.getElementById('easypaisaMerchantId').value;
+                            if (merchantId) {
+                                testResult.innerHTML = '<div class="success"><i class="fas fa-check-circle"></i> Connection successful! EasyPaisa API is ready.</div>';
+                            } else {
+                                testResult.innerHTML = '<div class="error"><i class="fas fa-times-circle"></i> Please enter Merchant ID to test connection.</div>';
+                            }
+                        }, 1000);
+                    });
+                }
+            }
+        }
+        
+        async function saveProduct(productData) {
+            // In real app, save to Firebase
+            // For demo, save to localStorage
+            const products = JSON.parse(localStorage.getItem('lorzenfit_products')) || [];
+            productData.id = 'prod_' + Date.now();
+            products.push(productData);
+            localStorage.setItem('lorzenfit_products', JSON.stringify(products));
+            
+            showToast('Product added successfully!', 'success');
+            document.getElementById('addProductForm').reset();
+            
+            // Clear image previews
+            document.getElementById('frontImagePreview').innerHTML = '';
+            document.getElementById('backImagePreview').innerHTML = '';
+            document.getElementById('extraImagePreview').innerHTML = '';
+            
+            // Update dashboard stats
+            loadDashboardStats();
+        }
+        
+        function loadDashboardStats() {
+            // Load products count
+            const products = JSON.parse(localStorage.getItem('lorzenfit_products')) || [];
+            document.getElementById('totalProducts').textContent = products.length;
+            
+            // Load orders count
+            const orders = JSON.parse(localStorage.getItem('lorzenfit_orders')) || [];
+            document.getElementById('totalOrders').textContent = orders.length;
+            
+            // Calculate revenue
+            const revenue = orders.reduce((sum, order) => sum + (order.total || 0), 0);
+            document.getElementById('totalRevenue').textContent = 'Rs. ' + revenue.toFixed(2);
+            
+            // Calculate customers (unique emails)
+            const customers = new Set(orders.map(order => order.customerEmail)).size;
+            document.getElementById('totalCustomers').textContent = customers;
+        }
+        
+        function loadRecentOrders() {
+            const tbody = document.getElementById('recentOrdersTable');
+            if (!tbody) return;
+            
+            const orders = JSON.parse(localStorage.getItem('lorzenfit_orders')) || [];
+            const recentOrders = orders.slice(0, 5); // Show 5 most recent
+            
+            if (recentOrders.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="text-center">No orders yet</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = recentOrders.map(order => `
+                <tr>
+                    <td><strong>${order.orderId || 'N/A'}</strong></td>
+                    <td>${order.customerName || 'Customer'}</td>
+                    <td>Rs. ${order.total ? order.total.toFixed(2) : '0.00'}</td>
+                    <td><span class="status-badge ${order.status || 'pending'}">${order.status || 'pending'}</span></td>
+                    <td>${new Date(order.date).toLocaleDateString()}</td>
+                </tr>
+            `).join('');
+        }
+        
+        function loadProductsTable() {
+            const tbody = document.getElementById('productsTable');
+            if (!tbody) return;
+            
+            const products = JSON.parse(localStorage.getItem('lorzenfit_products')) || [];
+            
+            if (products.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="text-center">
+                            <div class="empty-state">
+                                <i class="fas fa-tshirt"></i>
+                                <p>No products found</p>
+                                <a href="#" data-tab="add-product" class="btn btn-primary">Add Your First Product</a>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tbody.innerHTML = products.map(product => `
+                <tr>
+                    <td><input type="checkbox" class="product-checkbox"></td>
+                    <td>
+                        <div class="product-cell">
+                            <div class="product-image">
+                                <i class="fas fa-tshirt"></i>
+                            </div>
+                            <div class="product-info">
+                                <strong>${product.name}</strong>
+                                <small>ID: ${product.id}</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="category-badge">${product.category || 'casual'}</span></td>
+                    <td><strong>Rs. ${product.price ? product.price.toFixed(2) : '0.00'}</strong></td>
+                    <td>${product.stock || 0}</td>
+                    <td>
+                        <span class="status-badge ${(product.stock || 0) > 0 ? 'in-stock' : 'out-stock'}">
+                            ${(product.stock || 0) > 0 ? 'In Stock' : 'Out of Stock'}
+                        </span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="btn-icon" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-icon" title="Delete">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="btn-icon" title="View">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        function setupSalesChart() {
+            const ctx = document.getElementById('salesChart');
+            if (!ctx) return;
+            
+            // Sample data for chart
+            new Chart(ctx.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Sales (Rs.)',
+                        data: [12000, 19000, 15000, 25000, 22000, 30000],
+                        borderColor: '#4361ee',
+                        backgroundColor: 'rgba(67, 97, 238, 0.1)',
+                        borderWidth: 2,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return 'Rs. ' + value;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
