@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Lorzenfit | Premium Boys Shirts Collection</title>
+    <meta name="description" content="Browse our complete collection of premium shirts for boys. Various styles, colors, and sizes available. Shop the best boys shirts at Lorzenfit.">
+    <meta name="keywords" content="boys shirts collection, kids shirts, trendy shirts, formal shirts, casual shirts, Lorzenfit products">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-tshirt"></i>
+                Lorzen<span>fit</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html" class="active">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <a href="admin.html" class="btn btn-primary">Admin</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our Collection</h1>
+            <p>Premium shirts for stylish boys</p>
+        </div>
+    </section>
+
+    <!-- Products Filter -->
+    <section class="products-filter-section">
+        <div class="container">
+            <div class="filter-container">
+                <div class="filter-category">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="casual">Casual</button>
+                    <button class="filter-btn" data-filter="formal">Formal</button>
+                    <button class="filter-btn" data-filter="party">Party</button>
+                    <button class="filter-btn" data-filter="sports">Sports</button>
+                </div>
+                
+                <div class="filter-sort">
+                    <select id="sortProducts">
+                        <option value="default">Sort by: Default</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="newest">Newest First</option>
+                        <option value="popular">Most Popular</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products-main">
+        <div class="container">
+            <div class="products-header">
+                <h2 id="productsCount">Loading products...</h2>
+            </div>
+            
+            <div class="products-grid" id="allProducts">
+                <!-- Products loaded by JavaScript -->
+                <div class="loading-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading products...</p>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination" id="pagination">
+                <!-- Pagination loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Lorzenfit</div>
+                    <p>Premium shirts for boys that combine style, comfort, and quality. We're dedicated to providing the best fashion for the younger generation.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="admin.html">Admin</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, Karachi, Pakistan</li>
+                        <li><i class="fas fa-phone"></i> +92 300 1234567</li>
+                        <li><i class="fas fa-envelope"></i> info@lorzenfit.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe for updates and offers</p>
+                    <form id="newsletterForm">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Lorzenfit. All Rights Reserved. | Designed for Premium Boys Shirts</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Scripts -->
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Initialize products page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllProducts();
+            updateCartCount();
+            initMobileMenu();
+            
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const filter = this.getAttribute('data-filter');
+                    filterProducts(filter);
+                });
+            });
+            
+            // Sort products
+            document.getElementById('sortProducts').addEventListener('change', function() {
+                sortProducts(this.value);
+            });
+            
+            // Newsletter form
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showToast('Thank you for subscribing!', 'success');
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
