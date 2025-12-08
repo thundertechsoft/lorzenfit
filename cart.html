@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Lorzenfit | Your Selected Items</title>
+    <meta name="description" content="Review your selected items in Lorzenfit shopping cart. Update quantities, remove items, or proceed to checkout.">
+    <meta name="keywords" content="shopping cart, boys shirts cart, checkout, Lorzenfit cart">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-tshirt"></i>
+                Lorzen<span>fit</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+                <a href="admin.html" class="btn btn-primary">Admin</a>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Your Shopping Cart</h1>
+            <p>Review your selected items</p>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <div class="container">
+            <div class="cart-container">
+                <div class="cart-items" id="cartItems">
+                    <div class="cart-header">
+                        <h2>Cart Items</h2>
+                        <span id="itemCount">0 items</span>
+                    </div>
+                    
+                    <div class="cart-empty" id="cartEmpty">
+                        <div class="empty-cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <h3>Your cart is empty</h3>
+                        <p>Add some products to your cart</p>
+                        <a href="products.html" class="btn btn-primary">Shop Now</a>
+                    </div>
+                    
+                    <!-- Cart items loaded by JavaScript -->
+                </div>
+                
+                <div class="cart-summary" id="cartSummary">
+                    <h2>Order Summary</h2>
+                    
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal">Rs. 0</span>
+                        </div>
+                        
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span id="shipping">Rs. 200</span>
+                        </div>
+                        
+                        <div class="summary-row">
+                            <span>Tax</span>
+                            <span id="tax">Rs. 0</span>
+                        </div>
+                        
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="total">Rs. 0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="coupon-section">
+                        <input type="text" id="couponCode" placeholder="Enter coupon code">
+                        <button class="btn btn-outline" id="applyCoupon">Apply</button>
+                    </div>
+                    
+                    <a href="checkout.html" class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout</a>
+                    
+                    <div class="secure-checkout">
+                        <i class="fas fa-lock"></i>
+                        <span>Secure checkout</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Continue Shopping -->
+            <div class="continue-shopping">
+                <a href="products.html" class="btn btn-outline">
+                    <i class="fas fa-arrow-left"></i> Continue Shopping
+                </a>
+            </div>
+            
+            <!-- Recently Viewed -->
+            <div class="recently-viewed">
+                <h2>You May Also Like</h2>
+                <div class="products-grid" id="recommendedProducts">
+                    <!-- Recommended products loaded by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Lorzenfit</div>
+                    <p>Premium shirts for boys that combine style, comfort, and quality. We're dedicated to providing the best fashion for the younger generation.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="admin.html">Admin</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, Karachi, Pakistan</li>
+                        <li><i class="fas fa-phone"></i> +92 300 1234567</li>
+                        <li><i class="fas fa-envelope"></i> info@lorzenfit.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe for updates and offers</p>
+                    <form id="newsletterForm">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Lorzenfit. All Rights Reserved. | Designed for Premium Boys Shirts</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Scripts -->
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCart();
+            updateCartCount();
+            initMobileMenu();
+            loadRecommendedProducts();
+            
+            // Apply coupon
+            const applyCouponBtn = document.getElementById('applyCoupon');
+            if (applyCouponBtn) {
+                applyCouponBtn.addEventListener('click', function() {
+                    const couponCode = document.getElementById('couponCode').value;
+                    if (couponCode === 'LORZEN10') {
+                        showToast('Coupon applied! 10% discount added.', 'success');
+                    } else {
+                        showToast('Invalid coupon code', 'error');
+                    }
+                });
+            }
+            
+            // Newsletter form
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showToast('Thank you for subscribing!', 'success');
+                    this.reset();
+                });
+            }
+        });
+        
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('lorzenfit_cart')) || [];
+            const cartItems = document.getElementById('cartItems');
+            const cartEmpty = document.getElementById('cartEmpty');
+            const cartSummary = document.getElementById('cartSummary');
+            const itemCount = document.getElementById('itemCount');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+            
+            if (cart.length === 0) {
+                cartEmpty.style.display = 'block';
+                cartSummary.style.display = 'none';
+                checkoutBtn.style.display = 'none';
+                itemCount.textContent = '0 items';
+                return;
+            }
+            
+            cartEmpty.style.display = 'none';
+            cartSummary.style.display = 'block';
+            checkoutBtn.style.display = 'block';
+            itemCount.textContent = `${cart.length} ${cart.length === 1 ? 'item' : 'items'}`;
+            
+            // Calculate totals
+            let subtotal = 0;
+            cart.forEach(item => {
+                subtotal += item.price * item.quantity;
+            });
+            
+            const shipping = 200;
+            const tax = subtotal * 0.13;
+            const total = subtotal + shipping + tax;
+            
+            document.getElementById('subtotal').textContent = `Rs. ${subtotal.toFixed(2)}`;
+            document.getElementById('shipping').textContent = `Rs. ${shipping.toFixed(2)}`;
+            document.getElementById('tax').textContent = `Rs. ${tax.toFixed(2)}`;
+            document.getElementById('total').textContent = `Rs. ${total.toFixed(2)}`;
+            
+            // Display cart items
+            const cartItemsContainer = cartItems.querySelector('.cart-items-list') || document.createElement('div');
+            cartItemsContainer.className = 'cart-items-list';
+            cartItemsContainer.innerHTML = '';
+            
+            cart.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <div class="cart-item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <h3>${item.name}</h3>
+                        <p class="cart-item-size">Size: ${item.size || 'M'}</p>
+                        <p class="cart-item-price">Rs. ${item.price.toFixed(2)}</p>
+                    </div>
+                    <div class="cart-item-quantity">
+                        <button class="quantity-btn minus" onclick="updateQuantity(${index}, -1)">-</button>
+                        <input type="number" class="quantity-input" value="${item.quantity}" min="1" onchange="updateQuantityInput(${index}, this.value)">
+                        <button class="quantity-btn plus" onclick="updateQuantity(${index}, 1)">+</button>
+                    </div>
+                    <div class="cart-item-total">
+                        Rs. ${(item.price * item.quantity).toFixed(2)}
+                    </div>
+                    <div class="cart-item-remove">
+                        <button class="remove-btn" onclick="removeFromCart(${index})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+            });
+            
+            cartItems.appendChild(cartItemsContainer);
+        }
+        
+        function updateQuantity(index, change) {
+            const cart = JSON.parse(localStorage.getItem('lorzenfit_cart')) || [];
+            if (cart[index]) {
+                cart[index].quantity += change;
+                if (cart[index].quantity < 1) {
+                    cart[index].quantity = 1;
+                }
+                localStorage.setItem('lorzenfit_cart', JSON.stringify(cart));
+                loadCart();
+                updateCartCount();
+            }
+        }
+        
+        function updateQuantityInput(index, value) {
+            const cart = JSON.parse(localStorage.getItem('lorzenfit_cart')) || [];
+            if (cart[index]) {
+                const newQuantity = parseInt(value) || 1;
+                cart[index].quantity = newQuantity < 1 ? 1 : newQuantity;
+                localStorage.setItem('lorzenfit_cart', JSON.stringify(cart));
+                loadCart();
+                updateCartCount();
+            }
+        }
+        
+        function removeFromCart(index) {
+            const cart = JSON.parse(localStorage.getItem('lorzenfit_cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('lorzenfit_cart', JSON.stringify(cart));
+            loadCart();
+            updateCartCount();
+            showToast('Item removed from cart', 'success');
+        }
+        
+        function loadRecommendedProducts() {
+            // In real app, load from Firebase
+            const container = document.getElementById('recommendedProducts');
+            if (container) {
+                container.innerHTML = `
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" alt="Red Plaid Shirt">
+                        </div>
+                        <div class="product-info">
+                            <h3>Red Plaid Shirt</h3>
+                            <div class="product-price">Rs. 2,499</div>
+                            <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" alt="Blue Casual Shirt">
+                        </div>
+                        <div class="product-info">
+                            <h3>Blue Casual Shirt</h3>
+                            <div class="product-price">Rs. 2,199</div>
+                            <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
