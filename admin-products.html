@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Products | Solo Were Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-body">
+    <div class="admin-container">
+        <div class="admin-sidebar">
+            <div class="admin-logo">
+                <img src="assets/logo.png" alt="Logo" height="40">
+                <h3>Solo Were Admin</h3>
+            </div>
+            <nav class="admin-nav">
+                <a href="admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="admin-products.html" class="active"><i class="fas fa-tshirt"></i> Products</a>
+                <a href="admin-add.html"><i class="fas fa-plus-circle"></i> Add Product</a>
+                <a href="index.html"><i class="fas fa-store"></i> View Store</a>
+            </nav>
+        </div>
+        
+        <div class="admin-main">
+            <div class="admin-header">
+                <h2>Manage Products</h2>
+                <button id="logoutBtn" class="btn-logout">Logout</button>
+            </div>
+            
+            <div class="admin-content">
+                <div class="products-table" id="adminProductsTable">
+                    <div class="loading">Loading products...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="admin-script.js"></script>
+    <script>
+    // Load admin products
+    async function loadAdminProducts() {
+        try {
+            const snapshot = await db.collection('products').get();
+            const table = document.getElementById('adminProductsTable');
+            
+            if (snapshot.empty) {
+                table.innerHTML = '<p>No products found</p>';
+                return;
+            }
+            
+            let tableHTML = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            snapshot.forEach(doc => {
+                const product = doc.data();
+                tableHTML += `
+                    <tr>
+                        <td><img src="${product.image || 'assets/default-shirt.jpg'}" height="50"></td>
+                        <td>${product.name}</td>
+                        <td>Rs. ${product.price}</td>
+                        <td>${product.category || 'Shirts'}</td>
+                        <td>
+                            <button class="btn-edit" data-id="${doc.id}">Edit</button>
+                            <button class="btn-delete" data-id="${doc.id}">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            tableHTML += '</tbody></table>';
+            table.innerHTML = tableHTML;
+            
+        } catch (error) {
+            console.error('Error loading products:', error);
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', loadAdminProducts);
+    </script>
+</body>
+</html>
