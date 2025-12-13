@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Name | Solo Were</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <a href="https://wa.me/923121399449" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="assets/logo.png" alt="Solo Were Logo" height="50">
+                <h1>Solo Were</h1>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="cart.html">Cart <span id="cartCount">0</span></a>
+                <a href="about.html">About</a>
+                <a href="admin.html" class="admin-link">Admin</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-view">
+                <div class="product-images">
+                    <img src="" alt="" id="productImage">
+                </div>
+                <div class="product-info">
+                    <h1 id="productTitle">Product Title</h1>
+                    <p class="price" id="productPrice">Rs. 0</p>
+                    <p class="description" id="productDescription">Description here</p>
+                    
+                    <div class="size-selector">
+                        <label>Size:</label>
+                        <button class="size-btn">S</button>
+                        <button class="size-btn active">M</button>
+                        <button class="size-btn">L</button>
+                        <button class="size-btn">XL</button>
+                    </div>
+                    
+                    <div class="quantity">
+                        <label>Quantity:</label>
+                        <button class="qty-btn" id="decreaseQty">-</button>
+                        <span id="quantity">1</span>
+                        <button class="qty-btn" id="increaseQty">+</button>
+                    </div>
+                    
+                    <button class="btn add-to-cart-btn" id="addToCart">Add to Cart</button>
+                    <button class="btn buy-now-btn" id="buyNow">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Solo Were. All rights reserved.</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
