@@ -3,74 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Shopping Cart | Solo Were</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Shopping Cart - Solo Wear | Your Selected T-Shirts</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <a href="https://wa.me/923121399449" class="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="assets/logo.png" alt="Solo Were Logo" height="50">
-                <h1>Solo Were</h1>
-            </div>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="products.html">Products</a>
-                <a href="cart.html" class="active">Cart <span id="cartCount">0</span></a>
-                <a href="about.html">About</a>
-                <a href="admin.html" class="admin-link">Admin</a>
-            </nav>
-        </div>
+    <!-- Header -->
+    <header class="main-header">
+        <!-- Copy from index.html -->
     </header>
 
-    <section class="cart-page">
+    <!-- Cart Hero -->
+    <section class="page-hero cart-hero">
         <div class="container">
             <h1>Your Shopping Cart</h1>
-            
-            <div class="cart-container">
-                <div class="cart-items" id="cartItems">
-                    <!-- Cart items yahan aayenge -->
-                    <div class="empty-cart" id="emptyCart">
-                        <p>Your cart is empty</p>
-                        <a href="products.html" class="btn">Continue Shopping</a>
+            <p>Review your items before checkout</p>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+        <div class="container">
+            <div class="cart-layout">
+                <!-- Cart Items -->
+                <div class="cart-items">
+                    <div class="cart-header">
+                        <h2>Items in Cart (<span id="cartItemCount">0</span>)</h2>
+                        <button class="btn-clear-cart">Clear Cart</button>
+                    </div>
+                    
+                    <div class="cart-table">
+                        <div class="cart-table-header">
+                            <div class="col-product">Product</div>
+                            <div class="col-price">Price</div>
+                            <div class="col-quantity">Quantity</div>
+                            <div class="col-total">Total</div>
+                            <div class="col-remove">Remove</div>
+                        </div>
+                        
+                        <div class="cart-table-body" id="cartItems">
+                            <!-- Cart items will load here -->
+                            <div class="cart-empty">
+                                <i class="fas fa-shopping-cart"></i>
+                                <h3>Your cart is empty</h3>
+                                <p>Add some amazing t-shirts to your cart!</p>
+                                <a href="products.html" class="btn-primary">Continue Shopping</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="cart-summary">
+                <!-- Order Summary -->
+                <aside class="order-summary">
                     <h3>Order Summary</h3>
-                    <div class="summary-item">
-                        <span>Subtotal:</span>
-                        <span id="subtotal">Rs. 0</span>
+                    <div class="summary-details">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="subtotal">Rs. 0</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span id="shipping">Rs. 200</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Discount</span>
+                            <span id="discount">- Rs. 0</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="totalAmount">Rs. 200</span>
+                        </div>
                     </div>
-                    <div class="summary-item">
-                        <span>Shipping:</span>
-                        <span id="shipping">Rs. 200</span>
+                    
+                    <div class="coupon-section">
+                        <h4>Apply Coupon</h4>
+                        <div class="coupon-input">
+                            <input type="text" placeholder="Enter coupon code" id="couponCode">
+                            <button id="applyCoupon">Apply</button>
+                        </div>
+                        <div class="available-coupons">
+                            <p>Available coupons:</p>
+                            <ul>
+                                <li><strong>WELCOME10</strong> - 10% off on first order</li>
+                                <li><strong>SUMMER25</strong> - 25% off on orders above Rs. 3000</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="summary-item total">
-                        <span>Total:</span>
-                        <span id="total">Rs. 0</span>
+                    
+                    <div class="checkout-buttons">
+                        <a href="checkout.html" class="btn-checkout" id="proceedCheckout">Proceed to Checkout</a>
+                        <a href="products.html" class="btn-continue">Continue Shopping</a>
                     </div>
-                    <button class="btn checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
-                    <button class="btn easypaisa-btn" id="easypaisaBtn">
-                        <i class="fas fa-mobile-alt"></i> Pay with EasyPaisa
-                    </button>
-                </div>
+                    
+                    <div class="payment-methods-cart">
+                        <h4>Secure Payment Methods:</h4>
+                        <div class="payment-icons">
+                            <i class="fab fa-cc-visa" title="Visa"></i>
+                            <i class="fab fa-cc-mastercard" title="MasterCard"></i>
+                            <i class="fas fa-mobile-alt" title="EasyPaisa"></i>
+                            <i class="fas fa-university" title="Bank Transfer"></i>
+                            <i class="fas fa-money-bill-wave" title="Cash on Delivery"></i>
+                        </div>
+                    </div>
+                </aside>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Solo Were. All rights reserved.</p>
+    <!-- Recently Viewed -->
+    <section class="recently-viewed">
+        <div class="container">
+            <h2>You May Also Like</h2>
+            <div class="products-grid" id="recentProducts">
+                <!-- Products will load here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <!-- Copy from index.html -->
     </footer>
 
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
-    <script src="firebase-config.js"></script>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        // Cart page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartDisplay();
+            loadRecentlyViewed();
+        });
+    </script>
 </body>
 </html>
