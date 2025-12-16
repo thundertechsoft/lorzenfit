@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product - Solo Wear Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-dashboard">
+    <!-- Admin Sidebar (Copy from dashboard.html) -->
+    
+    <!-- Admin Main Content -->
+    <div class="admin-main">
+        <!-- Admin Header (Copy from dashboard.html) -->
+        
+        <!-- Add Product Content -->
+        <main class="add-product-content">
+            <div class="page-header">
+                <h1>Add New Product</h1>
+                <p>Add a new t-shirt to your store</p>
+            </div>
+            
+            <form class="add-product-form" id="productForm" enctype="multipart/form-data">
+                <div class="form-grid">
+                    <!-- Left Column -->
+                    <div class="form-column">
+                        <!-- Basic Information -->
+                        <div class="form-section">
+                            <h3>Basic Information</h3>
+                            <div class="form-group">
+                                <label>Product Title *</label>
+                                <input type="text" id="productTitle" placeholder="Premium Cotton T-Shirt" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>SKU (Stock Keeping Unit) *</label>
+                                <input type="text" id="productSKU" placeholder="SW-TS-001" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Description *</label>
+                                <textarea id="productDescription" rows="6" placeholder="Describe the product in detail..." required></textarea>
+                                <div class="char-count">0/2000 characters</div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Regular Price * (Rs.)</label>
+                                    <input type="number" id="regularPrice" min="0" step="0.01" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Sale Price (Rs.)</label>
+                                    <input type="number" id="salePrice" min="0" step="0.01">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Categories & Tags -->
+                        <div class="form-section">
+                            <h3>Categories & Tags</h3>
+                            <div class="form-group">
+                                <label>Main Category *</label>
+                                <select id="mainCategory" required>
+                                    <option value="">Select Category</option>
+                                    <option value="men">Men's T-Shirts</option>
+                                    <option value="women">Women's T-Shirts</option>
+                                    <option value="boys">Boys T-Shirts</option>
+                                    <option value="girls">Girls T-Shirts</option>
+                                    <option value="unisex">Unisex T-Shirts</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Sub Categories</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" value="printed"> Printed</label>
+                                    <label><input type="checkbox" value="plain"> Plain</label>
+                                    <label><input type="checkbox" value="graphic"> Graphic</label>
+                                    <label><input type="checkbox" value="oversized"> Oversized</label>
+                                    <label><input type="checkbox" value="slim-fit"> Slim Fit</label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Tags</label>
+                                <div class="tags-input">
+                                    <input type="text" id="tagInput" placeholder="Add tags (press Enter)">
+                                    <div class="tags-container" id="tagsContainer"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Column -->
+                    <div class="form-column">
+                        <!-- Product Images -->
+                        <div class="form-section">
+                            <h3>Product Images</h3>
+                            <div class="image-upload-area">
+                                <div class="main-image-upload">
+                                    <div class="upload-box" id="mainImageUpload">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p>Click to upload main image</p>
+                                        <input type="file" accept="image/*" id="mainImage" required>
+                                    </div>
+                                    <div class="image-preview" id="mainImagePreview"></div>
+                                </div>
+                                
+                                <div class="additional-images">
+                                    <h4>Additional Images</h4>
+                                    <div class="images-grid" id="additionalImages">
+                                        <div class="image-upload-box" id="addImage1">
+                                            <i class="fas fa-plus"></i>
+                                            <input type="file" accept="image/*">
+                                        </div>
+                                        <div class="image-upload-box" id="addImage2">
+                                            <i class="fas fa-plus"></i>
+                                            <input type="file" accept="image/*">
+                                        </div>
+                                        <div class="image-upload-box" id="addImage3">
+                                            <i class="fas fa-plus"></i>
+                                            <input type="file" accept="image/*">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Inventory -->
+                        <div class="form-section">
+                            <h3>Inventory</h3>
+                            <div class="inventory-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Size</th>
+                                            <th>Color</th>
+                                            <th>Stock</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="inventoryTable">
+                                        <tr>
+                                            <td>
+                                                <select class="size-select">
+                                                    <option value="S">S</option>
+                                                    <option value="M" selected>M</option>
+                                                    <option value="L">L</option>
+                                                    <option value="XL">XL</option>
+                                                    <option value="XXL">XXL</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="color-select">
+                                                    <option value="black">Black</option>
+                                                    <option value="white" selected>White</option>
+                                                    <option value="red">Red</option>
+                                                    <option value="blue">Blue</option>
+                                                    <option value="green">Green</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="number" min="0" value="50" class="stock-input">
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn-remove-row"><i class="fas fa-times"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <button type="button" class="btn-add-row" id="addInventoryRow">Add Row</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Specifications -->
+                        <div class="form-section">
+                            <h3>Specifications</h3>
+                            <div class="specs-grid">
+                                <div class="spec-item">
+                                    <label>Fabric</label>
+                                    <input type="text" value="100% Cotton" id="fabric">
+                                </div>
+                                <div class="spec-item">
+                                    <label>Fit Type</label>
+                                    <select id="fitType">
+                                        <option value="regular">Regular Fit</option>
+                                        <option value="slim">Slim Fit</option>
+                                        <option value="oversized">Oversized</option>
+                                    </select>
+                                </div>
+                                <div class="spec-item">
+                                    <label>Care Instructions</label>
+                                    <input type="text" value="Machine wash cold" id="careInstructions">
+                                </div>
+                                <div class="spec-item">
+                                    <label>Weight (grams)</label>
+                                    <input type="number" value="180" id="weight">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="submit" class="btn-save-product">
+                        <i class="fas fa-save"></i> Save Product
+                    </button>
+                    <button type="button" class="btn-save-draft">
+                        <i class="fas fa-file-alt"></i> Save as Draft
+                    </button>
+                    <button type="button" class="btn-preview">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
+                    <button type="reset" class="btn-reset">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+            </form>
+            
+            <!-- Preview Section -->
+            <div class="product-preview" id="productPreview">
+                <h3>Product Preview</h3>
+                <div class="preview-card">
+                    <!-- Preview will be generated here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/admin.js"></script>
+    <script src="../js/product-upload.js"></script>
+</body>
+</html>
