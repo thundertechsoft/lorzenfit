@@ -1,62 +1,509 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- ========== SEO META TAGS ========== -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solo Were - Premium Boys Shirts | Best Quality Shirts in Pakistan</title>
-    <meta name="description" content="Buy designer boys shirts at Solo Were. Latest trends, best quality cotton shirts with unique designs. Free delivery across Pakistan.">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <meta name="keywords" content="boys shirts, designer shirts, casual shirts, formal shirts, cotton shirts, pakistani brands, solo were">
-    <meta property="og:title" content="Solo Were - Premium Boys Shirts">
-    <meta property="og:description" content="Best quality shirts for boys in Pakistan">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Solo Wear - Premium quality designer T-shirts at best prices. Buy custom printed t-shirts online with free shipping. Latest collection of men's and women's t-shirts in Pakistan.">
+    <meta name="keywords" content="t-shirts Pakistan, designer t-shirts, printed t-shirts Karachi, custom t-shirts Lahore, online t-shirts Islamabad, solo wear, premium t-shirts, cotton t-shirts Pakistan">
+    <meta name="author" content="Solo Wear Pakistan">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="googlebot" content="index, follow">
+    <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
-    <link rel="canonical" href="https://www.solowere.com">
+    <meta property="og:title" content="Solo Wear | Premium Designer T-Shirts Online in Pakistan">
+    <meta property="og:description" content="Buy designer t-shirts online at Solo Wear. Best quality cotton t-shirts with unique prints. Free delivery across Pakistan.">
+    <meta property="og:url" content="https://solowear.pk">
+    <meta property="og:site_name" content="Solo Wear">
+    <meta property="og:image" content="https://solowear.pk/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Solo Wear | Premium T-Shirts Online">
+    <meta name="twitter:description" content="Premium quality t-shirts with unique designs in Pakistan">
+    <meta name="twitter:image" content="https://solowear.pk/images/twitter-card.jpg">
+    <link rel="canonical" href="https://solowear.pk">
+    
+    <!-- ========== TITLE ========== -->
+    <title>Solo Wear | Premium Designer T-Shirts Online in Pakistan | Buy Custom Printed T-Shirts</title>
+    
+    <!-- ========== FAVICON ========== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="images/favicon/site.webmanifest">
+    <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#ff6b6b">
+    <meta name="msapplication-TileColor" content="#ff6b6b">
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- ========== FONTS ========== -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ========== SCHEMA MARKUP ========== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Solo Wear",
+        "url": "https://solowear.pk",
+        "logo": "https://solowear.pk/images/logo.png",
+        "description": "Premium quality designer t-shirts in Pakistan",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Fashion Street",
+            "addressLocality": "Karachi",
+            "addressRegion": "Sindh",
+            "postalCode": "75500",
+            "addressCountry": "PK"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+92-300-1234567",
+            "contactType": "Customer Service",
+            "email": "info@solowear.pk"
+        },
+        "sameAs": [
+            "https://facebook.com/solowearpk",
+            "https://instagram.com/solowearpk",
+            "https://twitter.com/solowearpk"
+        ]
+    }
+    </script>
+    
+    <style>
+        /* Inline Critical CSS for Fast Loading */
+        :root {
+            --primary: #ff4757;
+            --secondary: #3742fa;
+            --accent: #ffa502;
+            --dark: #2f3542;
+            --light: #f1f2f6;
+            --success: #2ed573;
+            --gradient: linear-gradient(135deg, #ff4757, #3742fa);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <a href="https://wa.me/923121399449?text=Hi%20Solo%20Were%20I%20want%20to%20buy%20shirts" class="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
 
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="assets/logo.png" alt="Solo Were Logo" height="50">
-                <h1>Solo Were</h1>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-content">
+                    <div class="offer-text">
+                        <i class="fas fa-gift"></i> Free Shipping on Orders Above Rs. 1999
+                    </div>
+                    <div class="top-links">
+                        <a href="#"><i class="fas fa-phone"></i> +92 300 1234567</a>
+                        <a href="#"><i class="fas fa-envelope"></i> info@solowear.pk</a>
+                    </div>
+                </div>
             </div>
-            <nav>
-                <a href="index.html" class="active">Home</a>
-                <a href="products.html">Products</a>
-                <a href="cart.html">Cart <span id="cartCount">0</span></a>
-                <a href="about.html">About</a>
-                <a href="admin.html" class="admin-link">Admin</a>
-            </nav>
         </div>
+        
+        <nav class="main-nav">
+            <div class="container">
+                <div class="nav-container">
+                    <!-- Logo -->
+                    <a href="index.html" class="logo">
+                        <div class="logo-circle">
+                            <span class="logo-s">S</span>
+                            <span class="logo-w">W</span>
+                        </div>
+                        <div class="logo-text">
+                            <h1>SOLO WEAR</h1>
+                            <p class="tagline">Premium Apparel</p>
+                        </div>
+                    </a>
+                    
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <form action="products.html" method="GET">
+                            <input type="search" name="q" placeholder="Search t-shirts, designs, categories..." 
+                                   autocomplete="off" aria-label="Search products">
+                            <button type="submit" aria-label="Search">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                        <div class="search-suggestions"></div>
+                    </div>
+                    
+                    <!-- Navigation Menu -->
+                    <ul class="nav-menu">
+                        <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="products.html"><i class="fas fa-tshirt"></i> Products</a></li>
+                        <li class="dropdown">
+                            <a href="#"><i class="fas fa-list"></i> Categories <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-content">
+                                <a href="products.html?cat=men">Men's T-Shirts</a>
+                                <a href="products.html?cat=women">Women's T-Shirts</a>
+                                <a href="products.html?cat=boys">Boys T-Shirts</a>
+                                <a href="products.html?cat=girls">Girls T-Shirts</a>
+                                <a href="products.html?cat=printed">Printed T-Shirts</a>
+                                <a href="products.html?cat=plain">Plain T-Shirts</a>
+                            </div>
+                        </li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
+                    </ul>
+                    
+                    <!-- User Actions -->
+                    <div class="user-actions">
+                        <a href="wishlist.html" class="action-btn" title="Wishlist">
+                            <i class="far fa-heart"></i>
+                            <span class="badge">0</span>
+                        </a>
+                        <a href="cart.html" class="action-btn cart-btn" title="Cart">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="badge cart-count">0</span>
+                        </a>
+                        <a href="admin/index.html" class="action-btn admin-btn" title="Admin">
+                            <i class="fas fa-user-cog"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-toggle" aria-label="Toggle Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h2 class="animate-text">Trendy Shirts for Modern Boys</h2>
-            <p class="animate-text delay-1">Quality + Style = Solo Were</p>
-            <a href="products.html" class="btn btn-pulse">Shop Now</a>
+        <div class="hero-slider">
+            <div class="slide active">
+                <div class="slide-content">
+                    <h2 class="slide-title">Express Your Style</h2>
+                    <h3 class="slide-subtitle">With Premium Quality T-Shirts</h3>
+                    <p class="slide-desc">100% Premium Cotton • Latest Designs • Perfect Fit</p>
+                    <div class="slide-buttons">
+                        <a href="products.html" class="btn-primary">Shop Now</a>
+                        <a href="#featured" class="btn-secondary">View Collection</a>
+                    </div>
+                </div>
+                <div class="slide-image">
+                    <img src="images/hero/hero1.jpg" alt="Solo Wear T-Shirt Collection" loading="eager">
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-features">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature">
+                        <i class="fas fa-shipping-fast"></i>
+                        <h4>Free Shipping</h4>
+                        <p>Across Pakistan</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-undo"></i>
+                        <h4>Easy Returns</h4>
+                        <p>7 Days Policy</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Quality Guarantee</h4>
+                        <p>100% Cotton</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-headset"></i>
+                        <h4>24/7 Support</h4>
+                        <p>Always Available</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="featured">
-        <h2>Featured Shirts</h2>
-        <div class="products" id="featuredProducts">
-            <div class="loading">Loading products...</div>
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Shop By Category</h2>
+                <p class="section-subtitle">Find your perfect style</p>
+            </div>
+            <div class="categories-grid">
+                <a href="products.html?cat=men" class="category-card">
+                    <div class="category-img">
+                        <img src="images/categories/men.jpg" alt="Men's T-Shirts" loading="lazy">
+                        <div class="overlay"></div>
+                    </div>
+                    <h3>Men's Collection</h3>
+                    <p>Explore 100+ Designs</p>
+                </a>
+                <a href="products.html?cat=women" class="category-card">
+                    <div class="category-img">
+                        <img src="images/categories/women.jpg" alt="Women's T-Shirts" loading="lazy">
+                        <div class="overlay"></div>
+                    </div>
+                    <h3>Women's Collection</h3>
+                    <p>Trendy & Stylish</p>
+                </a>
+                <a href="products.html?cat=printed" class="category-card">
+                    <div class="category-img">
+                        <img src="images/categories/printed.jpg" alt="Printed T-Shirts" loading="lazy">
+                        <div class="overlay"></div>
+                    </div>
+                    <h3>Printed T-Shirts</h3>
+                    <p>Unique Designs</p>
+                </a>
+                <a href="products.html?cat=plain" class="category-card">
+                    <div class="category-img">
+                        <img src="images/categories/plain.jpg" alt="Plain T-Shirts" loading="lazy">
+                        <div class="overlay"></div>
+                    </div>
+                    <h3>Plain T-Shirts</h3>
+                    <p>Minimal & Classic</p>
+                </a>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Solo Were. All rights reserved.</p>
-        <p>Contact: +92 312 1399449 | Email: info@solowere.com</p>
+    <!-- Featured Products -->
+    <section class="featured-products" id="featured">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Products</h2>
+                <p class="section-subtitle">Best Selling T-Shirts</p>
+            </div>
+            <div class="products-grid" id="featuredProducts">
+                <!-- Products will load here via JavaScript -->
+            </div>
+            <div class="text-center">
+                <a href="products.html" class="btn-view-all">View All Products <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner -->
+    <section class="promo-banner">
+        <div class="container">
+            <div class="banner-content">
+                <h2>Summer Sale 2024</h2>
+                <h3>Up to 50% OFF</h3>
+                <p>On all printed t-shirts. Limited time offer!</p>
+                <a href="products.html?sale=true" class="btn-banner">Shop Sale</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Real reviews from real customers</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Best quality t-shirts I've bought online. The fabric is amazing!"</p>
+                    <div class="customer">
+                        <h4>Ali Ahmed</h4>
+                        <p>Karachi</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"Fast delivery and perfect fitting. Will order again!"</p>
+                    <div class="customer">
+                        <h4>Sara Khan</h4>
+                        <p>Lahore</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"The designs are unique and colors don't fade after washing."</p>
+                    <div class="customer">
+                        <h4>Usman Riaz</h4>
+                        <p>Islamabad</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Get updates on new arrivals, exclusive offers, and discounts.</p>
+                <form class="subscribe-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn-subscribe">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-circle small">
+                            <span>S</span>
+                            <span>W</span>
+                        </div>
+                        <h3>SOLO WEAR</h3>
+                    </div>
+                    <p class="footer-desc">Premium quality t-shirts with unique designs. We provide the best cotton t-shirts at affordable prices across Pakistan.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="size-guide.html">Size Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="shipping.html">Shipping Policy</a></li>
+                        <li><a href="returns.html">Return Policy</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Fashion Street, DHA, Karachi, Pakistan</li>
+                        <li><i class="fas fa-phone"></i> +92 300 1234567</li>
+                        <li><i class="fas fa-envelope"></i> info@solowear.pk</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 10AM - 8PM</li>
+                    </ul>
+                    <div class="payment-methods">
+                        <h5>We Accept:</h5>
+                        <div class="payment-icons">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fas fa-mobile-alt" title="EasyPaisa"></i>
+                            <i class="fas fa-university"></i>
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 Solo Wear. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="sitemap.xml">Sitemap</a>
+                    <a href="robots.txt">Robots.txt</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
-    <script src="firebase-config.js"></script>
-    <script src="script.js"></script>
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- ========== EXTERNAL FILES ========== -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    
+    <!-- ========== INITIALIZATION ========== -->
+    <script>
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hide preloader
+            setTimeout(() => {
+                document.querySelector('.preloader').style.display = 'none';
+            }, 1000);
+            
+            // Load featured products
+            loadFeaturedProducts();
+            
+            // Initialize cart
+            updateCartCount();
+        });
+    </script>
 </body>
 </html>
