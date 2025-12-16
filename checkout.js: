@@ -1,0 +1,50 @@
+// Checkout specific functions
+function validateCheckoutForm() {
+    const shippingForm = document.getElementById('shippingForm');
+    const paymentForm = document.getElementById('paymentForm');
+    
+    if (!shippingForm.checkValidity()) {
+        shippingForm.reportValidity();
+        return false;
+    }
+    
+    if (!paymentForm.checkValidity()) {
+        paymentForm.reportValidity();
+        return false;
+    }
+    
+    const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+    
+    if (paymentMethod === 'easypaisa') {
+        const transactionId = document.getElementById('transactionId').value;
+        if (!transactionId || transactionId.length < 12) {
+            showNotification('Please enter a valid EasyPaisa transaction ID', 'error');
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+function processEasyPaisaPayment(transactionId) {
+    // Implement EasyPaisa payment verification
+    return new Promise((resolve, reject) => {
+        // This should be an API call to your backend
+        fetch('/api/verify-easypaisa', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ transactionId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.verified) {
+                resolve(data);
+            } else {
+                reject(new Error('Payment verification failed'));
+            }
+        })
+        .catch(error => reject(error));
+    });
+}
