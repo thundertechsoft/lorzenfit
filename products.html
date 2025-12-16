@@ -3,55 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boys Shirts Collection | Solo Were Products</title>
-    <meta name="description" content="Browse our complete collection of boys shirts. Casual, formal, party wear shirts in all sizes and colors.">
-    <link rel="stylesheet" href="style.css">
+    <title>T-Shirts Collection - Solo Wear | Shop Premium T-Shirts</title>
+    <meta name="description" content="Browse our collection of premium t-shirts. Men's, Women's, Printed, Plain t-shirts in all sizes. Best quality at best prices.">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <a href="https://wa.me/923121399449" class="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="assets/logo.png" alt="Solo Were Logo" height="50">
-                <h1>Solo Were</h1>
-            </div>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="products.html" class="active">Products</a>
-                <a href="cart.html">Cart <span id="cartCount">0</span></a>
-                <a href="about.html">About</a>
-                <a href="admin.html" class="admin-link">Admin</a>
-            </nav>
-        </div>
+    <!-- Header -->
+    <header class="main-header">
+        <!-- Copy from index.html -->
     </header>
 
+    <!-- Products Hero -->
+    <section class="page-hero products-hero">
+        <div class="container">
+            <h1>Our T-Shirt Collection</h1>
+            <p>Premium Quality • Latest Designs • All Sizes</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
     <section class="products-page">
         <div class="container">
-            <h1>All Shirts Collection</h1>
-            <div class="filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="casual">Casual</button>
-                <button class="filter-btn" data-filter="formal">Formal</button>
-                <button class="filter-btn" data-filter="party">Party</button>
-            </div>
-            
-            <div class="products-grid" id="productsGrid">
-                <!-- Products load honge JavaScript se -->
+            <div class="products-layout">
+                <!-- Sidebar Filters -->
+                <aside class="products-sidebar">
+                    <div class="filter-section">
+                        <h3>Categories</h3>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="men">
+                                <span>Men's T-Shirts</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="women">
+                                <span>Women's T-Shirts</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="boys">
+                                <span>Boys T-Shirts</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="category" value="girls">
+                                <span>Girls T-Shirts</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h3>Price Range</h3>
+                        <div class="price-range">
+                            <input type="range" min="0" max="10000" value="5000" class="slider" id="priceSlider">
+                            <div class="price-values">
+                                <span>Rs. 0</span>
+                                <span>Rs. 10,000</span>
+                            </div>
+                            <div class="selected-price">
+                                Selected: <span id="selectedPrice">Rs. 5,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h3>Size</h3>
+                        <div class="size-options">
+                            <button class="size-btn" data-size="S">S</button>
+                            <button class="size-btn" data-size="M">M</button>
+                            <button class="size-btn" data-size="L">L</button>
+                            <button class="size-btn" data-size="XL">XL</button>
+                            <button class="size-btn" data-size="XXL">XXL</button>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h3>Color</h3>
+                        <div class="color-options">
+                            <button class="color-btn" style="background-color: #000;" data-color="black" title="Black"></button>
+                            <button class="color-btn" style="background-color: #fff; border: 1px solid #ccc;" data-color="white" title="White"></button>
+                            <button class="color-btn" style="background-color: #ff0000;" data-color="red" title="Red"></button>
+                            <button class="color-btn" style="background-color: #0000ff;" data-color="blue" title="Blue"></button>
+                            <button class="color-btn" style="background-color: #008000;" data-color="green" title="Green"></button>
+                            <button class="color-btn" style="background-color: #808080;" data-color="gray" title="Gray"></button>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-apply-filters">Apply Filters</button>
+                    <button class="btn-clear-filters">Clear All</button>
+                </aside>
+                
+                <!-- Main Products Area -->
+                <main class="products-main">
+                    <div class="products-header">
+                        <div class="sort-options">
+                            <select id="sortBy">
+                                <option value="default">Sort By: Default</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="newest">Newest First</option>
+                                <option value="popular">Most Popular</option>
+                            </select>
+                        </div>
+                        <div class="view-options">
+                            <button class="view-btn active" data-view="grid"><i class="fas fa-th-large"></i></button>
+                            <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Products Grid -->
+                    <div class="products-container grid-view" id="productsContainer">
+                        <!-- Products will load here via JavaScript -->
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <button class="page-btn prev" disabled><i class="fas fa-chevron-left"></i> Prev</button>
+                        <div class="page-numbers">
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <span>...</span>
+                            <button class="page-btn">10</button>
+                        </div>
+                        <button class="page-btn next">Next <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </main>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Solo Were. All rights reserved.</p>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <!-- Copy from index.html -->
     </footer>
 
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
-    <script src="firebase-config.js"></script>
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Products page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+            
+            // Price slider
+            const priceSlider = document.getElementById('priceSlider');
+            const selectedPrice = document.getElementById('selectedPrice');
+            
+            priceSlider.addEventListener('input', function() {
+                selectedPrice.textContent = 'Rs. ' + this.value;
+            });
+            
+            // View toggle
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const container = document.getElementById('productsContainer');
+                    if (this.dataset.view === 'grid') {
+                        container.classList.add('grid-view');
+                        container.classList.remove('list-view');
+                    } else {
+                        container.classList.add('list-view');
+                        container.classList.remove('grid-view');
+                    }
+                });
+            });
+        });
+        
+        function loadProducts() {
+            // This function will load products from your database/backend
+            // For now, we'll show sample products
+            const container = document.getElementById('productsContainer');
+            container.innerHTML = `
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/products/tshirt1.jpg" alt="Premium Cotton T-Shirt" loading="lazy">
+                        <div class="product-badge">New</div>
+                        <div class="product-actions">
+                            <button class="quick-view" title="Quick View"><i class="fas fa-eye"></i></button>
+                            <button class="add-wishlist" title="Add to Wishlist"><i class="far fa-heart"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Premium Cotton T-Shirt</h3>
+                        <div class="product-price">
+                            <span class="current-price">Rs. 1,499</span>
+                            <span class="original-price">Rs. 1,999</span>
+                            <span class="discount">-25%</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="rating-count">(128)</span>
+                        </div>
+                        <button class="btn-add-to-cart" data-id="1">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Add more product cards similarly -->
+            `;
+        }
+    </script>
 </body>
 </html>
